@@ -28,7 +28,7 @@ KT_API/
 https://petstore.swagger.io/v2
 ```
 
-[Скриншот BaseRequest](Screenshots/base_request.png)
+![Скриншот BaseRequest](KT_API/Screenshots/base_request.png)
 
 ## User
 
@@ -43,9 +43,9 @@ https://petstore.swagger.io/v2
 
 После удаления выполнен GET-запрос. Получен `404 Not Found`, пользователь удалён.
 
-[Скриншоты User](Screenshots/user_create_get.png)  
-[Изменение User](Screenshots/user_update.png)  
-[Удаление User](Screenshots/user_delete.png)
+![Скриншоты User](KT_API/Screenshots/user_create_get.png)  
+![Изменение User](KT_API/Screenshots/user_update.png)  
+![Удаление User](KT_API/Screenshots/user_delete.png)
 
 ## Store
 
@@ -58,10 +58,10 @@ https://petstore.swagger.io/v2
 | GET | `/store/order/5` | 200 OK |
 | DELETE | `/store/order/5` | 200 OK |
 
-[Inventory](Screenshots/store_inventory.png)  
-[Создание заказа](Screenshots/store_create_order.png)  
-[Получение заказа](Screenshots/store_get_order.png)  
-[Удаление заказа](Screenshots/store_delete_order.png)
+![Inventory](KT_API/Screenshots/store_inventory.png)  
+![Создание заказа](KT_API/Screenshots/store_create_order.png)  
+![Получение заказа](KT_API/Screenshots/store_get_order.png)  
+![Удаление заказа](KT_API/Screenshots/store_delete_order.png)
 
 ## Соответствие заданию
 
