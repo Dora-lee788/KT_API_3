@@ -1,75 +1,127 @@
+
 # КТ — API Testing
 
-## Цель
+## Цель работы
 
-Протестировать API Swagger Petstore с помощью Python, используя базовый класс `BaseRequest` из примера `api_testing`.
+Протестировать REST API Swagger Petstore с помощью Python и библиотеки `pytest`, используя базовый класс `BaseRequest` из примера `api_testing`.
 
-Swagger Petstore: https://petstore.swagger.io/
-
-Пример: https://github.com/sadboy2001/api_testing
+- **Тестируемый API:** https://petstore.swagger.io/
+- **Репозиторий с примером:** https://github.com/sadboy2001/api_testing
 
 ## Структура проекта
 
 ```text
 KT_API/
 ├── base_request.py
-├── user_requests.py
-├── store_requests.py
-└── Screenshots/
+├── tests/
+│   ├── test_user.py
+│   └── test_store.py
+├── Screenshots/
+└── README.md
 ```
 
-## BaseRequest
+## 1. Базовый класс BaseRequest
 
-В `base_request.py` реализован общий класс для выполнения GET, POST, PUT и DELETE запросов.
+В файле `base_request.py` реализован класс `BaseRequest` для выполнения HTTP-запросов к API.
 
-Базовый URL:
+Реализованы методы:
 
-```text
-https://petstore.swagger.io/v2
+- `get()` — получение данных;
+- `post()` — создание данных;
+- `put()` — изменение данных;
+- `delete()` — удаление данных.
+
+**Базовый URL:** `https://petstore.swagger.io/v2`
+
+![Реализация BaseRequest](Screenshots/base_request.png)
+
+## 2. Тестирование сущности User
+
+Для сущности `user` реализованы четыре автоматизированных теста с использованием `pytest`.
+
+| Тест | HTTP-метод | Endpoint | Проверка |
+|---|---|---|---|
+| `test_create_user` | POST | `/user` | Создание пользователя |
+| `test_get_user` | GET | `/user/test_user_1001` | Получение пользователя |
+| `test_update_user` | PUT | `/user/test_user_1001` | Изменение данных пользователя |
+| `test_delete_user` | DELETE | `/user/test_user_1001` | Удаление пользователя |
+
+После изменения данных выполняется дополнительный GET-запрос для проверки обновлённых значений. После удаления выполняется GET-запрос для проверки отсутствия пользователя.
+
+**Скриншоты:**
+
+- Создание и получение пользователя:
+
+  ![Создание и получение пользователя](Screenshots/user_create_get.png)
+
+- Изменение данных пользователя:
+
+  ![Изменение пользователя](Screenshots/user_update.png)
+
+- Удаление пользователя:
+
+  ![Удаление пользователя](Screenshots/user_delete.png)
+
+Файл с тестами: `tests/test_user.py`.
+
+## 3. Тестирование сущности Store
+
+Для сущности `store` реализованы четыре автоматизированных теста с использованием `pytest`.
+
+| Тест | HTTP-метод | Endpoint | Проверка |
+|---|---|---|---|
+| `test_get_inventory` | GET | `/store/inventory` | Получение информации о наличии товаров |
+| `test_create_order` | POST | `/store/order` | Создание заказа |
+| `test_get_order` | GET | `/store/order/5` | Получение заказа по идентификатору |
+| `test_delete_order` | DELETE | `/store/order/5` | Удаление заказа |
+
+После удаления заказа выполняется дополнительный GET-запрос для проверки результата удаления.
+
+**Скриншоты:**
+
+- Получение Inventory:
+
+  ![Получение Inventory](Screenshots/store_inventory.png)
+
+- Создание заказа:
+
+  ![Создание заказа](Screenshots/store_create_order.png)
+
+- Получение заказа:
+
+  ![Получение заказа](Screenshots/store_get_order.png)
+
+- Удаление заказа:
+
+  ![Удаление заказа](Screenshots/store_delete_order.png)
+
+Файл с тестами: `tests/test_store.py`.
+
+## 4. Запуск автоматизированных тестов
+
+Для запуска всех тестов используется команда:
+
+```powershell
+python -m pytest -v
 ```
 
-![Скриншот BaseRequest](KT_API/Screenshots/base_request.png)
+По результатам запуска успешно пройдены все восемь тестов: четыре для `user` и четыре для `store`.
 
-## User
+**Результат выполнения pytest:**
 
-Выполнены 4 запроса:
+![Результат запуска pytest — 8 тестов пройдены](Screenshots/pytest_results.png)
 
-| Запрос | Endpoint | Результат |
-|---|---|---|
-| POST | `/user` | 200 OK |
-| GET | `/user/test_user_1001` | 200 OK |
-| PUT | `/user/test_user_1001` | 200 OK |
-| DELETE | `/user/test_user_1001` | 200 OK |
+## 5. Соответствие заданию
 
-После удаления выполнен GET-запрос. Получен `404 Not Found`, пользователь удалён.
-
-![Скриншоты User](KT_API/Screenshots/user_create_get.png)  
-![Изменение User](KT_API/Screenshots/user_update.png)  
-![Удаление User](KT_API/Screenshots/user_delete.png)
-
-## Store
-
-Выполнены 4 запроса:
-
-| Запрос | Endpoint | Результат |
-|---|---|---|
-| GET | `/store/inventory` | 200 OK |
-| POST | `/store/order` | 200 OK |
-| GET | `/store/order/5` | 200 OK |
-| DELETE | `/store/order/5` | 200 OK |
-
-![Inventory](KT_API/Screenshots/store_inventory.png)  
-![Создание заказа](KT_API/Screenshots/store_create_order.png)  
-![Получение заказа](KT_API/Screenshots/store_get_order.png)  
-![Удаление заказа](KT_API/Screenshots/store_delete_order.png)
-
-## Соответствие заданию
-
-- Swagger Petstore использован.
-- Изучен пример `api_testing`.
-- Создан и использован базовый класс `BaseRequest`.
-- Реализовано 4 запроса для `user`.
-- Реализовано 4 запроса для `store`.
-- Результаты запросов проверены. 
+- Использован Swagger Petstore API.
+- Изучен пример реализации API-запросов из репозитория `api_testing`.
+- Реализован базовый класс `BaseRequest`.
+- Использованы HTTP-методы GET, POST, PUT и DELETE.
+- Реализованы четыре теста для сущности `user`.
+- Реализованы четыре теста для сущности `store`.
+- Тестовые методы оформлены с использованием `pytest`.
+- Добавлены проверки результатов выполнения запросов.
+- Выполнен запуск автоматизированных тестов: **8 тестов пройдены успешно**.
+- Добавлены скриншоты результатов тестирования.
 
 
