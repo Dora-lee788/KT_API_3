@@ -33,7 +33,7 @@ KT_API/
 
 **Базовый URL:** `https://petstore.swagger.io/v2`
 
-![Реализация BaseRequest](Screenshots/base_request.png)
+![Реализация BaseRequest](KT_API/Screenshots/base_request.png)
 
 ## 2. Тестирование сущности User
 
@@ -52,15 +52,15 @@ KT_API/
 
 - Создание и получение пользователя:
 
-  ![Создание и получение пользователя](Screenshots/user_create_get.png)
+  ![Создание и получение пользователя](KT_API/Screenshots/user_create_get.png)
 
 - Изменение данных пользователя:
 
-  ![Изменение пользователя](Screenshots/user_update.png)
+  ![Изменение пользователя](KT_API/Screenshots/user_update.png)
 
 - Удаление пользователя:
 
-  ![Удаление пользователя](Screenshots/user_delete.png)
+  ![Удаление пользователя](KT_API/Screenshots/user_delete.png)
 
 Файл с тестами: `tests/test_user.py`.
 
@@ -81,19 +81,19 @@ KT_API/
 
 - Получение Inventory:
 
-  ![Получение Inventory](Screenshots/store_inventory.png)
+  ![Получение Inventory](KT_API/Screenshots/store_inventory.png)
 
 - Создание заказа:
 
-  ![Создание заказа](Screenshots/store_create_order.png)
+  ![Создание заказа](KT_API/Screenshots/store_create_order.png)
 
 - Получение заказа:
 
-  ![Получение заказа](Screenshots/store_get_order.png)
+  ![Получение заказа](KT_API/Screenshots/store_get_order.png)
 
 - Удаление заказа:
 
-  ![Удаление заказа](Screenshots/store_delete_order.png)
+  ![Удаление заказа](KT_API/Screenshots/store_delete_order.png)
 
 Файл с тестами: `tests/test_store.py`.
 
@@ -109,7 +109,7 @@ python -m pytest -v
 
 **Результат выполнения pytest:**
 
-![Результат запуска pytest — 8 тестов пройдены](Screenshots/pytest_results.png)
+![Результат запуска pytest — 8 тестов пройдены](KT_API/Screenshots/pytest_results.png)
 
 ## 5. Соответствие заданию
 
