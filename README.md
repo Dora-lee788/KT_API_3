@@ -8,18 +8,6 @@
 - **Тестируемый API:** https://petstore.swagger.io/
 - **Репозиторий с примером:** https://github.com/sadboy2001/api_testing
 
-## Структура проекта
-
-```text
-KT_API/
-├── base_request.py
-├── tests/
-│   ├── test_user.py
-│   └── test_store.py
-├── Screenshots/
-└── README.md
-```
-
 ## 1. Базовый класс BaseRequest
 
 В файле `base_request.py` реализован класс `BaseRequest` для выполнения HTTP-запросов к API.
